@@ -1,0 +1,14 @@
+{% extends 'App/base.html' %}
+
+{% block body_block %}
+<form method="post" enctype="multipart/form-data" action='{% url 'App:Log_in' %}'>
+{% csrf_token %}
+{{ user_main.as_p }}
+{{ user_pic.as_p }}
+
+<input type="submit" name="" value="submit" class='btn btn-primary'>
+
+
+</form>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'App/base.html' %}
+
+{% block body_block %}
+{% load static %}
+<div class="jumbotron">
+
+  <form method="post" enctype="multipart/form-data" action='{% url 'App:Log_in' %}'>
+  {% csrf_token %}
+  {{ user_main.as_p }}
+  {{ user_pic.as_p }}
+
+  <input type="submit" name="" value="submit" class='btn btn-primary'>
+
+  </form>
+<img src="{% static 'image/image.png' %}" alt="no picture found">
+
+</div>
+
+{% if user_lists %}
+
+<table>
+  <thead>
+    <th>UserName</th>
+    <th>Email</th>
+  </thead>
+
+  {% for i in user_lists %}
+
+  <tr>
+    <td>{{i.username}}</td>
+    <td>{{i.email}}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+{% else %}
+<p>no tables yet</p>
+{% endif %}
+{% endblock %}
